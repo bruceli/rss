@@ -663,7 +663,7 @@
             
             NSString *articleTitle = [item valueForChild:@"title"];
             NSString *articleUrl = [item valueForChild:@"link"];            
-            NSString *articleDateString = [item valueForChild:@"pubDate"];        
+            NSString *articleDateString = [item valueForChild:@"pubdate"];        
             NSDate *articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
             
 			NSMutableDictionary *feedEntry = [self feedItemWithURL:articleUrl title:articleTitle date:articleDate];
