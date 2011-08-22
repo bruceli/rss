@@ -46,6 +46,7 @@
 		DAA9BF8213F94D8D004B9E75 /* DeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA9BF8113F94D8D004B9E75 /* DeleteButton.png */; };
 		DAADD29A13DF05D100AA1FDE /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAADD29813DF05D100AA1FDE /* AddViewController.m */; };
 		DAADD29B13DF05D100AA1FDE /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAADD29913DF05D100AA1FDE /* AddViewController.xib */; };
+		DAE91EAB1402CF8E009AFD36 /* NSDate+InternetDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE91EAA1402CF8E009AFD36 /* NSDate+InternetDateTime.m */; };
 		DAEF9AE713C36AED008FC72D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF9AE513C36AED008FC72D /* SettingViewController.m */; };
 		DAEF9AE813C36AED008FC72D /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAEF9AE613C36AED008FC72D /* SettingViewController.xib */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,8 @@
 		DAADD29713DF05D100AA1FDE /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		DAADD29813DF05D100AA1FDE /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		DAADD29913DF05D100AA1FDE /* AddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		DAE91EA91402CF8E009AFD36 /* NSDate+InternetDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+InternetDateTime.h"; sourceTree = "<group>"; };
+		DAE91EAA1402CF8E009AFD36 /* NSDate+InternetDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+InternetDateTime.m"; sourceTree = "<group>"; };
 		DAEF9AE413C36AED008FC72D /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		DAEF9AE513C36AED008FC72D /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		DAEF9AE613C36AED008FC72D /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 		DAEF9AE213C36A86008FC72D /* RootViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DAE91EA91402CF8E009AFD36 /* NSDate+InternetDateTime.h */,
+				DAE91EAA1402CF8E009AFD36 /* NSDate+InternetDateTime.m */,
 				DA7F0DFA13BF0C710055D803 /* RootViewController.h */,
 				DA7F0DFD13BF0C720055D803 /* RootViewController.xib */,
 				DA7F0DFB13BF0C720055D803 /* RootViewController.m */,
@@ -468,6 +473,7 @@
 				DA4C48B113C8769600FB7127 /* CustomCell.m in Sources */,
 				DAADD29A13DF05D100AA1FDE /* AddViewController.m in Sources */,
 				DA78D5D713FAED8800527653 /* WebViewController.m in Sources */,
+				DAE91EAB1402CF8E009AFD36 /* NSDate+InternetDateTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
