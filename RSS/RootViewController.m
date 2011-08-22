@@ -605,7 +605,8 @@
 {
 	BOOL isExist = NO;
 	NSString* theFeedURL = [inFeedItem valueForKey:@"theURL"];
-	if(![self getFeedItemByRssURL:theURL feedURL:theFeedURL] == nil)
+	if([self getFeedItemByRssURL:theURL feedURL:theFeedURL] != nil)
+
 		isExist = YES;
 	
 	return isExist;
@@ -619,7 +620,7 @@
 }
 
 
--(void)saveFeedItem:(NSMutableArray*)feedList byURL:(NSString*)theURL
+-(void)saveFeedItem:(NSMutableArray*)feedLists byURL:(NSString*)theURL
 {
     
     for ( int i= 0; i < [self.allEntries count]; i++) {
@@ -629,7 +630,7 @@
         
         if ([targetURL compare:theURL] == NSOrderedSame) {
 			
-			for(int k = 0; k < [feedList count]; k ++)
+			for(int k = 0; k < [feedLists count]; k ++)
 			{
 				NSMutableDictionary* feedItem = [feedList objectAtIndex:k];
 				
