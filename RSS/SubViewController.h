@@ -14,7 +14,6 @@
 #import "NSDate+InternetDateTime.h"
 #import "NSArray+Extras.h"
 #import "RootViewController.h"
-#import "RSSEntry.h"
 #import "WebViewController.h"
 
 @interface SubViewController : UITableViewController {
