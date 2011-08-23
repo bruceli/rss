@@ -379,29 +379,55 @@
     return status;
 }
 
+-(void) recoveryRssEntries
+{
+    NSError *error;
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+
+    @try 
+    {
+        NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)objectAtIndex:0];
+        NSString *plistPath = [rootPath stringByAppendingPathComponent:@"arrayFav.plist"];
+            
+        if ([fileMgr removeItemAtPath:plistPath error:&error] == YES)
+            [allEntries writeToFile:plistPath atomically:YES];   
+
+    }
+    @catch (NSException *ex) {
+    }
+    
+}
 
 -(void) saveRssEntriesToFile
 {
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                              NSUserDomainMask,
-                                                              YES) objectAtIndex:0];
-    NSString *plistPath = [rootPath 
-                           stringByAppendingPathComponent:@"arrayFav.plist"];
-    
-    [allEntries writeToFile:plistPath atomically:YES];   
+    @try 
+    {  
+        NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)objectAtIndex:0];
+        NSString *plistPath = [rootPath stringByAppendingPathComponent:@"arrayFav.plist"];
+        
+        [allEntries writeToFile:plistPath atomically:YES];   
+        
+    }  
+    @catch (NSException *ex) {
+        [self recoveryRssEntries];
+        
+    }
 }
 
 
 
 -(void) saveSettingToFile
 {
-    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                              NSUserDomainMask,
-                                                              YES) objectAtIndex:0];
-    NSString *plistPath = [rootPath 
-                           stringByAppendingPathComponent:@"setting.plist"];
-    
-    [settings writeToFile:plistPath atomically:YES];   
+    @try 
+    {
+        NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)objectAtIndex:0];
+        NSString *plistPath = [rootPath stringByAppendingPathComponent:@"setting.plist"];
+        
+        [settings writeToFile:plistPath atomically:YES];   
+    }
+    @catch (NSException *ex) { 
+    }
+
 }
 
 
