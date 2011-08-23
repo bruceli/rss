@@ -50,6 +50,7 @@ enum {
     self.settingArray = [[NSMutableArray alloc] init];
     [settingArray addObject:@"Automatic refresh"];
     [settingArray addObject:@"Refresh interval"];
+    [settingArray addObject:@"Remove articles"];
 
     //Set the title
     self.navigationItem.title = @"Settings";
