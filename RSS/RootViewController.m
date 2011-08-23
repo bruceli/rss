@@ -661,11 +661,13 @@
         
         NSArray *items = [channel elementsForName:@"item"];
         for (GDataXMLElement *item in items) {
-            
+            NSDate *articleDate;
             NSString *articleTitle = [item valueForChild:@"title"];
             NSString *articleUrl = [item valueForChild:@"link"];            
             NSString *articleDateString = [item valueForChild:@"pubDate"];
-            NSDate *articleDate;
+            if(articleDateString == nil)
+                 articleDateString = [item valueForChild:@"pubdate"];
+
             if(articleDateString)
                 articleDate = [NSDate dateFromInternetDateTimeString:articleDateString formatHint:DateFormatHintRFC822];
             
