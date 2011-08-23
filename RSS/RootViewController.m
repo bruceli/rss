@@ -632,7 +632,7 @@
 			
 			for(int k = 0; k < [feedLists count]; k ++)
 			{
-				NSMutableDictionary* feedItem = [feedList objectAtIndex:k];
+				NSMutableDictionary* feedItem = [feedLists objectAtIndex:k];
 				
 				if(![self isFeed:feedItem alreadyExistIn:theURL])
 					[self addFeed:feedItem intoRssEntry:theURL];
