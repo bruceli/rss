@@ -10,6 +10,7 @@
 #import "AddViewController.h"
 @interface SettingViewController ()
 - (void)configureCell:(UITableViewCell *)cell withRSSEntry:(NSMutableDictionary *)theEntry;
+-(NSString*)getTimeDetailLabel;
 @end
 
 @implementation SettingViewController
@@ -22,6 +23,9 @@ enum {
     kRssSection = 0,
     kSettingSection,
 };
+
+
+
 
 - (void)dealloc
 {
@@ -151,20 +155,25 @@ enum {
 
     static NSString *CellIdentifier = @"Cell";
     NSLog(@"Running on Section %d," ,sectionNO);
-
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+/*
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+*/
     // Set up the cell...
     
     //First get the dictionary object
     NSString *cellValue;
-    cell.accessoryView = nil;
     switch (sectionNO) {
         case kRssSection: 
         {
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+            }
+            cell.accessoryView = nil;
+
             NSMutableDictionary *theEntry=[self.rootController.allEntries objectAtIndex:indexPath.row];
             [self configureCell:cell withRSSEntry:theEntry];
             UIButton *deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(55,20,100,45)];
@@ -182,6 +191,11 @@ enum {
         case kSettingSection:
         {
             //Setting Section.
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+            }
+            cell.accessoryView = nil;
+
             cellValue = [self.settingArray objectAtIndex:indexPath.row];
             
             // create Switchable cell button.
@@ -208,6 +222,7 @@ enum {
             
             if ([cellValue isEqualToString:@"Refresh interval"]) 
             {
+
                 NSLog(@"Running on Cell %@," ,cellValue);
                 
                 if(  cell.accessoryView == nil)
@@ -227,6 +242,7 @@ enum {
                     self.sliderCell = cell;
                     [theSlider release];
                     
+                    cell.detailTextLabel.text = [self getTimeDetailLabel];
                 }
             }
             cell.textLabel.text  = cellValue;
@@ -283,21 +299,53 @@ enum {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AddViewController *addViewController = [[AddViewController alloc] initWithNibName:@"AddViewController" bundle:nil];
-    
-    //Get the RSSentry from allEntries.
-    
-    //Pass the URL to subViewController.
-    addViewController.cellIndexPath = indexPath;
-    
-    NSMutableDictionary *theEntry=[self.rootController.allEntries objectAtIndex:indexPath.row];
-    addViewController.incomingTitle  = [theEntry objectForKey:@"blogTitle"];
-    addViewController.incomingRss  = [theEntry objectForKey:@"theURL"];
-    
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:addViewController animated:YES];
-    [addViewController release];
+    if(indexPath.section == kRssSection)
+    {
+        
+        AddViewController *addViewController = [[AddViewController alloc] initWithNibName:@"AddViewController" bundle:nil];
+        
+        //Get the RSSentry from allEntries.
+        
+        //Pass the URL to subViewController.
+        addViewController.cellIndexPath = indexPath;
+        
+        NSMutableDictionary *theEntry=[self.rootController.allEntries objectAtIndex:indexPath.row];
+        addViewController.incomingTitle  = [theEntry objectForKey:@"blogTitle"];
+        addViewController.incomingRss  = [theEntry objectForKey:@"theURL"];
+        
+        // ...
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:addViewController animated:YES];
+        [addViewController release];
+
+    }
+}
+
+-(NSString*)getTimeDetailLabel
+{
+    NSNumber* theTime = [self.rootController getRefreshInterval];
+    NSString* timeString = nil;
+    switch ([theTime intValue]) {
+        case kFastest:
+            timeString = @"10 minutes";
+            break;
+        case kFast:
+            timeString = @"30 minutes";
+            break;
+        case kNormal:
+            timeString = @"1 hour";
+            break;
+        case kSlow:
+            timeString = @"2 hour";
+            break;
+        case kSlowest:
+            timeString = @"6 hour";
+            break;
+            
+        default:
+            break;
+    }
+    return timeString;
 }
 
 @end

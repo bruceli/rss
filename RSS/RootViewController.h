@@ -25,6 +25,14 @@
     
 }
 
+enum {
+    kFastest = 1,
+    kFast,
+    kNormal,
+    kSlow,
+    kSlowest,
+};
+
 @property (retain) NSMutableArray *allEntries;
 @property (retain) NSMutableArray *settings;
 

@@ -335,7 +335,26 @@
 
 -(void) setTimeFreameWithIntValue:(int)inTime
 {
-    timeFrame = inTime*300;
+    switch (inTime) {
+        case kFastest:
+            timeFrame = 600;    //10 min
+            break;
+        case kFast:
+            timeFrame = 1800;   //30 min
+            break;
+        case kNormal:
+            timeFrame = 3600;   // 1 hour
+            break;
+        case kSlow:
+            timeFrame = 7200;  // 2 hour
+            break;
+        case kSlowest:
+            timeFrame = 21600;  // 6 hour
+            break;
+            
+        default:
+            timeFrame = 1800;
+    }
 }
 
 -(void) autoRefresh:(id)sender
