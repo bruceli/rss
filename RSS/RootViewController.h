@@ -20,6 +20,8 @@
     
     NSMutableArray *feedList;
     NSTimeInterval timeFrame;
+    NSTimeInterval dayFrame;
+
     BOOL canRefresh;
 
     
@@ -31,6 +33,14 @@ enum {
     kNormal,
     kSlow,
     kSlowest,
+};
+
+enum {
+    k5Days = 1,
+    k10Days,
+    k15Days,
+    k20Days,
+    k30Days,
 };
 
 @property (retain) NSMutableArray *allEntries;
@@ -55,6 +65,5 @@ enum {
 -(NSNumber*)getRefreshInterval;
 -(void)setAutoRefresh:(BOOL)isAuto;
 -(void)setRefreshInterval:(NSNumber*)inTime;
-
-
+-(void)setFeedExpire:(NSNumber*)inTime;
 @end

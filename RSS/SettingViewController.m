@@ -11,6 +11,8 @@
 @interface SettingViewController ()
 - (void)configureCell:(UITableViewCell *)cell withRSSEntry:(NSMutableDictionary *)theEntry;
 -(NSString*)getTimeDetailLabel;
+-(NSString*)getDayDetailLabel;
+
 @end
 
 @implementation SettingViewController
@@ -54,7 +56,7 @@ enum {
     self.settingArray = [[NSMutableArray alloc] init];
     [settingArray addObject:@"Automatic refresh"];
     [settingArray addObject:@"Refresh interval"];
-    [settingArray addObject:@"Remove articles"];
+    [settingArray addObject:@"Remove articles after"];
 
     //Set the title
     self.navigationItem.title = @"Settings";
@@ -232,7 +234,7 @@ enum {
                     //add a Slider   
                     //UISlider *theSlider =  [[[UISlider alloc] initWithFrame:CGRectMake(55,20,220,45)] autorelease];
                     UISlider *theSlider =  [[UISlider alloc] initWithFrame:CGRectMake(55,20,100,35)];
-                    [theSlider addTarget:self action:@selector(sliderMoved:) forControlEvents:UIControlEventTouchUpInside];
+                    [theSlider addTarget:self action:@selector(refreshSliderMoved:) forControlEvents:UIControlEventTouchUpInside];
 
                     theSlider.maximumValue=5;
                     theSlider.minimumValue=1;       
@@ -245,6 +247,36 @@ enum {
                     cell.detailTextLabel.text = [self getTimeDetailLabel];
                 }
             }
+            
+            if ([cellValue isEqualToString:@"Remove articles after"]) 
+            {
+                
+                NSLog(@"Running on Cell %@," ,cellValue);
+                
+                if(  cell.accessoryView == nil)
+                {
+                    NSLog(@"Adding Slider on Cell ------ %@," ,cellValue);
+                    
+                    //add a Slider   
+                    //UISlider *theSlider =  [[[UISlider alloc] initWithFrame:CGRectMake(55,20,220,45)] autorelease];
+                    UISlider *theSlider =  [[UISlider alloc] initWithFrame:CGRectMake(55,20,100,35)];
+                    [theSlider addTarget:self action:@selector(expireSliderMoved:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    theSlider.maximumValue=5;
+                    theSlider.minimumValue=1;       
+                    
+                    NSNumber* theTime = [self.rootController getExpireDay];
+                    
+                    theSlider.value = [theTime floatValue];
+                    cell.accessoryView = theSlider;
+                    self.sliderCell = cell;
+                    [theSlider release];
+                    
+                    cell.detailTextLabel.text = [self getDayDetailLabel];
+                }
+            }
+
+            
             cell.textLabel.text  = cellValue;
         }
         break;
@@ -292,9 +324,14 @@ enum {
     [self.rootController setAutoRefresh:[(UISwitch*)sender isOn] ];
 }
 
--(void)sliderMoved:(id)sender
+-(void)refreshSliderMoved:(id)sender
 {
     [self.rootController setRefreshInterval:[NSNumber numberWithFloat:[(UISlider*)sender value]] ];
+}
+
+-(void)expireSliderMoved:(id)sender
+{
+    [self.rootController setFeedExpire:[NSNumber numberWithFloat:[(UISlider*)sender value]] ];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -347,6 +384,34 @@ enum {
     }
     return timeString;
 }
+
+-(NSString*)getDayDetailLabel
+{
+    NSNumber* theTime = [self.rootController getExpireDay];
+    NSString* timeString = nil;
+    switch ([theTime intValue]) {
+        case kFastest:
+            timeString = @"5 days";
+            break;
+        case kFast:
+            timeString = @"10 days";
+            break;
+        case kNormal:
+            timeString = @"15 days";
+            break;
+        case kSlow:
+            timeString = @"20 days";
+            break;
+        case kSlowest:
+            timeString = @"30 days";
+            break;
+            
+        default:
+            break;
+    }
+    return timeString;
+}
+
 
 @end
 

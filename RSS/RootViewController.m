@@ -23,6 +23,8 @@
 - (void)saveSettingToFile;
 - (void)initSettings;
 -(void) setTimeFreameWithIntValue:(int)inTime;
+-(void) setExpireDayWithIntValue:(int)inTime;
+-(NSNumber*)getExpireDay;
 -(NSMutableDictionary*)getFeedItemByURL:(NSString*)theURL feedIndex:(NSInteger)index;
 
 
@@ -63,15 +65,13 @@
     // init canRefresh here;
     canRefresh = YES;
     
-    //Test function. closed
     [self preLoadRssEntryDetailInfo];
 	
     NSNumber* intervalTime = [self getRefreshInterval];
     [self setTimeFreameWithIntValue:[intervalTime intValue]];
-
     
-    //[self.rootTableView reloadData];
-    //Always crash when I tried to call reloadData, Why this happen?
+    NSNumber* expireDay = [self getExpireDay];
+    [self setExpireDayWithIntValue:[expireDay intValue]];
 
 }
 
@@ -357,6 +357,30 @@
     }
 }
 
+
+-(void) setExpireDayWithIntValue:(int)inTime
+{
+    switch (inTime) {
+        case kFastest:
+            dayFrame = 5;    //5days
+            break;
+        case kFast:
+            dayFrame = 10;   //10days
+            break;
+        case kNormal:
+            dayFrame = 15;   // 15days
+            break;
+        case kSlow:
+            dayFrame = 20;  // 20 days
+            break;
+        case kSlowest:
+            dayFrame = 30;  // 30 days
+            break;
+            
+        default:
+            dayFrame = 5;
+    }
+}
 -(void) autoRefresh:(id)sender
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -476,10 +500,11 @@
 {
     NSNumber* autoFlag = [NSNumber numberWithInt:0];
     NSNumber* refreshInterval = [NSNumber numberWithInt:1]; 
-    
-    NSArray* keys = [NSArray arrayWithObjects:@"autoRefresh", @"RefreshInterval",nil];
+    NSNumber* keepFeeds = [NSNumber numberWithInt:1]; 
 
-    NSMutableArray* settingInfo = [NSMutableArray arrayWithObjects:autoFlag, refreshInterval,nil];
+    NSArray* keys = [NSArray arrayWithObjects:@"autoRefresh", @"RefreshInterval",@"FeedExpire",nil];
+
+    NSMutableArray* settingInfo = [NSMutableArray arrayWithObjects:autoFlag, refreshInterval, keepFeeds,nil];
     NSMutableDictionary* settingEntry = [NSMutableDictionary dictionaryWithObjects:settingInfo forKeys:keys];
     
     [settings insertObject:settingEntry atIndex:0];
@@ -502,6 +527,14 @@
     NSMutableDictionary* settingEntry = [settings objectAtIndex:0];
     NSNumber* theTime = [settingEntry valueForKey:@"RefreshInterval"];
 
+    return theTime;
+}
+
+-(NSNumber*)getExpireDay
+{
+    NSMutableDictionary* settingEntry = [settings objectAtIndex:0];
+    NSNumber* theTime = [settingEntry valueForKey:@"FeedExpire"];
+    
     return theTime;
 }
 
@@ -531,6 +564,18 @@
     [self setTimeFreameWithIntValue:theTime];
 }
 
+-(void)setFeedExpire:(NSNumber*)inTime
+{
+    NSMutableDictionary* settingEntry = [NSMutableDictionary dictionaryWithDictionary:[settings objectAtIndex:0]];
+    int theTime = [inTime intValue];
+    [settingEntry setObject:[NSNumber numberWithInt:theTime] forKey:@"FeedExpire"];
+    
+    [settings replaceObjectAtIndex:0 withObject:settingEntry];
+    
+    [self saveSettingToFile];
+    
+    [self setExpireDayWithIntValue:theTime];
+}
 
 -(NSMutableDictionary*)rssEntryWithURL:(NSString*) theURL title:(NSString*)theTitle
 {
