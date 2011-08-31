@@ -63,7 +63,10 @@ enum {
 
 -(BOOL)isAutoRefresh;
 -(NSNumber*)getRefreshInterval;
+-(NSNumber*)getExpireDay;
 -(void)setAutoRefresh:(BOOL)isAuto;
 -(void)setRefreshInterval:(NSNumber*)inTime;
 -(void)setFeedExpire:(NSNumber*)inTime;
+-(void)removeExpiredFeeds;
+
 @end

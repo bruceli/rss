@@ -12,7 +12,8 @@
 - (void)configureCell:(UITableViewCell *)cell withRSSEntry:(NSMutableDictionary *)theEntry;
 -(NSString*)getTimeDetailLabel;
 -(NSString*)getDayDetailLabel;
-
+-(void)initSliderValue;
+-(void)saveSliderValue;
 @end
 
 @implementation SettingViewController
@@ -33,8 +34,7 @@ enum {
 {
     [settingArray dealloc];
     settingArray = nil;
-    
-    
+        
     [super dealloc];
 }
 
@@ -52,6 +52,10 @@ enum {
 {
     [super viewDidLoad];
     
+    
+    refeshInterval = [[[NSNumber alloc] initWithInt:0] retain];
+    expireDay = [[[NSNumber alloc] initWithInt:0] retain];
+    
     //Initialize the array.
     self.settingArray = [[NSMutableArray alloc] init];
     [settingArray addObject:@"Automatic refresh"];
@@ -67,6 +71,8 @@ enum {
     
     self.tableView.delegate = self;
     self.tableView.allowsSelectionDuringEditing = YES;
+    
+    [self initSliderValue];
 }
 
 - (void)viewDidUnload
@@ -77,14 +83,8 @@ enum {
 
 - (void)viewWillDisappear:(BOOL)animated
 {
- /*   UISwitch *switchview = self.switchCell.accessoryView;
-    if ([switchview isOn]) {
-        int k =1;
-    }
-    else{
-        int w = 1;
-    }
-*/
+    [self saveSliderValue];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -156,7 +156,7 @@ enum {
     NSInteger sectionNO= indexPath.section;
 
     static NSString *CellIdentifier = @"Cell";
-    NSLog(@"Running on Section %d," ,sectionNO);
+    //NSLog(@"Running on Section %d," ,sectionNO);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 /*
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -204,11 +204,11 @@ enum {
             if ([cellValue isEqualToString:@"Automatic refresh"]) 
             {
                 //add a switch
-                NSLog(@"Running on Cell %@," ,cellValue);
+                //NSLog(@"Running on Cell %@," ,cellValue);
                 
                 if(  cell.accessoryView == nil)
                 {   
-                    NSLog(@"Adding Switch on Cell %@," ,cellValue);
+                    //NSLog(@"Adding Switch on Cell %@," ,cellValue);
                     
                     UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
                     [switchview addTarget:self action:@selector(autoRefeshButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -225,11 +225,11 @@ enum {
             if ([cellValue isEqualToString:@"Refresh interval"]) 
             {
 
-                NSLog(@"Running on Cell %@," ,cellValue);
+                //NSLog(@"Running on Cell %@," ,cellValue);
                 
                 if(  cell.accessoryView == nil)
                 {
-                    NSLog(@"Adding Slider on Cell ------ %@," ,cellValue);
+                    //NSLog(@"Adding Slider on Cell ------ %@," ,cellValue);
                     
                     //add a Slider   
                     //UISlider *theSlider =  [[[UISlider alloc] initWithFrame:CGRectMake(55,20,220,45)] autorelease];
@@ -238,8 +238,8 @@ enum {
 
                     theSlider.maximumValue=5;
                     theSlider.minimumValue=1;       
-                    NSNumber* theTime = [self.rootController getRefreshInterval];
-                    theSlider.value = [theTime floatValue];
+                    //NSNumber* theTime = [self.rootController getRefreshInterval];
+                    theSlider.value = [refeshInterval floatValue];
                     cell.accessoryView = theSlider;
                     self.sliderCell = cell;
                     [theSlider release];
@@ -251,11 +251,11 @@ enum {
             if ([cellValue isEqualToString:@"Remove articles after"]) 
             {
                 
-                NSLog(@"Running on Cell %@," ,cellValue);
+                //NSLog(@"Running on Cell %@," ,cellValue);
                 
                 if(  cell.accessoryView == nil)
                 {
-                    NSLog(@"Adding Slider on Cell ------ %@," ,cellValue);
+                    //NSLog(@"Adding Slider on Cell ------ %@," ,cellValue);
                     
                     //add a Slider   
                     //UISlider *theSlider =  [[[UISlider alloc] initWithFrame:CGRectMake(55,20,220,45)] autorelease];
@@ -265,9 +265,9 @@ enum {
                     theSlider.maximumValue=5;
                     theSlider.minimumValue=1;       
                     
-                    NSNumber* theTime = [self.rootController getExpireDay];
+                    // NSNumber* theTime = [self.rootController getExpireDay];
                     
-                    theSlider.value = [theTime floatValue];
+                    theSlider.value = [expireDay floatValue];
                     cell.accessoryView = theSlider;
                     self.sliderCell = cell;
                     [theSlider release];
@@ -326,12 +326,12 @@ enum {
 
 -(void)refreshSliderMoved:(id)sender
 {
-    [self.rootController setRefreshInterval:[NSNumber numberWithFloat:[(UISlider*)sender value]] ];
+    refeshInterval = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
 }
 
 -(void)expireSliderMoved:(id)sender
 {
-    [self.rootController setFeedExpire:[NSNumber numberWithFloat:[(UISlider*)sender value]] ];
+    expireDay = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -356,6 +356,18 @@ enum {
         [addViewController release];
 
     }
+}
+
+-(void) initSliderValue
+{
+    refeshInterval = [self.rootController getRefreshInterval];
+    expireDay = [self.rootController getExpireDay];
+}
+
+-(void) saveSliderValue
+{
+    [self.rootController setRefreshInterval:refeshInterval];
+    [self.rootController setFeedExpire:expireDay ];
 }
 
 -(NSString*)getTimeDetailLabel

@@ -15,7 +15,8 @@
     UITableViewCell *sliderCell;
     UITableViewCell *switchCell;
     RootViewController *rootController;
-
+    NSNumber *refeshInterval;
+    NSNumber *expireDay;
 
 }
 //@property (nonatomic, retain) IBOutlet UITableView *tableSettingView;

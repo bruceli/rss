@@ -26,6 +26,7 @@
 -(void) setExpireDayWithIntValue:(int)inTime;
 -(NSNumber*)getExpireDay;
 -(NSMutableDictionary*)getFeedItemByURL:(NSString*)theURL feedIndex:(NSInteger)index;
+-(BOOL)isFeedExpired:(NSMutableDictionary*) inFeedItem;
 
 
 @end
@@ -724,8 +725,9 @@
 			{
 				NSMutableDictionary* feedItem = [feedLists objectAtIndex:k];
 				
-				if(![self isFeed:feedItem alreadyExistIn:theURL])
-					[self addFeed:feedItem intoRssEntry:theURL];
+//				if(![self isFeed:feedItem alreadyExistIn:theURL])
+				if(![self isFeed:feedItem alreadyExistIn:theURL] && ![self isFeedExpired:feedItem])
+                    [self addFeed:feedItem intoRssEntry:theURL];
 			}
         }
        
@@ -734,6 +736,32 @@
     [self saveRssEntriesToFile];
 }
 
+
+// Avoid expired feed into FeedArray.
+-(BOOL)isFeedExpired:(NSMutableDictionary*) inFeedItem
+{
+    BOOL isExpired = NO;
+    NSDate* theDate = [inFeedItem valueForKey:@"theURL"];
+    NSTimeInterval currExpireTime = dayFrame*60*60*24 ;
+    if(theDate)
+    {
+        NSDate *now = [NSDate date];
+        NSTimeInterval theTime = [now timeIntervalSinceDate: theDate];
+        
+        if(currExpireTime < theTime)        
+            isExpired = YES;
+    }
+    return isExpired;
+}
+
+// if user change expire date settings, Call this to remove the feed if expired. 
+-(void)removeExpiredFeeds
+{
+    //get each RssURL 
+        // get each Feed
+            // ifExpired
+                // remove it
+}
 
 #pragma mark ----- HTTP  Services 
 
