@@ -500,8 +500,8 @@
 -(void)initSettings
 {
     NSNumber* autoFlag = [NSNumber numberWithInt:0];
-    NSNumber* refreshInterval = [NSNumber numberWithInt:1]; 
-    NSNumber* keepFeeds = [NSNumber numberWithInt:1]; 
+    NSNumber* refreshInterval = [NSNumber numberWithInt:kNormal]; 
+    NSNumber* keepFeeds = [NSNumber numberWithInt:k5Days]; 
 
     NSArray* keys = [NSArray arrayWithObjects:@"autoRefresh", @"RefreshInterval",@"FeedExpire",nil];
 

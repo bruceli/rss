@@ -403,13 +403,13 @@ enum {
     NSString* timeString = nil;
     switch ([theTime intValue]) {
         case kFastest:
-            timeString = @"5 days";
+            timeString = @"1 days";
             break;
         case kFast:
-            timeString = @"10 days";
+            timeString = @"5 days";
             break;
         case kNormal:
-            timeString = @"15 days";
+            timeString = @"10 days";
             break;
         case kSlow:
             timeString = @"20 days";

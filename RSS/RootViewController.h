@@ -28,17 +28,17 @@
 }
 
 enum {
-    kFastest = 1,
-    kFast,
-    kNormal,
-    kSlow,
-    kSlowest,
+    kFastest = 1,   //10 minutes
+    kFast,          //30 minutes
+    kNormal,        //1 hour
+    kSlow,          //2 hours
+    kSlowest,       //6 hours
 };
 
 enum {
-    k5Days = 1,
+    k1Days = 1,
+    k5Days,
     k10Days,
-    k15Days,
     k20Days,
     k30Days,
 };
