@@ -10,10 +10,12 @@
 #import "AddViewController.h"
 @interface SettingViewController ()
 - (void)configureCell:(UITableViewCell *)cell withRSSEntry:(NSMutableDictionary *)theEntry;
--(NSString*)getTimeDetailLabel;
--(NSString*)getDayDetailLabel;
 -(void)initSliderValue;
 -(void)saveSliderValue;
+-(NSNumber*)getRefreshInterval;
+-(NSNumber*)getExpireDay;
+-(NSString*)getTimeDetailLabelBy:(NSNumber*)inTime;
+-(NSString*)getDayDetailLabelBy:(NSNumber*)inTime;
 @end
 
 @implementation SettingViewController
@@ -235,6 +237,7 @@ enum {
                     //UISlider *theSlider =  [[[UISlider alloc] initWithFrame:CGRectMake(55,20,220,45)] autorelease];
                     UISlider *theSlider =  [[UISlider alloc] initWithFrame:CGRectMake(55,20,100,35)];
                     [theSlider addTarget:self action:@selector(refreshSliderMoved:) forControlEvents:UIControlEventTouchUpInside];
+                    [theSlider addTarget:self action:@selector(refreshSliderDraging:) forControlEvents:UIControlEventTouchDragInside];
 
                     theSlider.maximumValue=5;
                     theSlider.minimumValue=1;       
@@ -244,7 +247,7 @@ enum {
                     self.sliderCell = cell;
                     [theSlider release];
                     
-                    cell.detailTextLabel.text = [self getTimeDetailLabel];
+                    cell.detailTextLabel.text = [self getTimeDetailLabelBy:[self getRefreshInterval] ];
                 }
             }
             
@@ -261,7 +264,8 @@ enum {
                     //UISlider *theSlider =  [[[UISlider alloc] initWithFrame:CGRectMake(55,20,220,45)] autorelease];
                     UISlider *theSlider =  [[UISlider alloc] initWithFrame:CGRectMake(55,20,100,35)];
                     [theSlider addTarget:self action:@selector(expireSliderMoved:) forControlEvents:UIControlEventTouchUpInside];
-                    
+                    [theSlider addTarget:self action:@selector(expireSliderDraging:) forControlEvents:UIControlEventTouchDragInside];
+
                     theSlider.maximumValue=5;
                     theSlider.minimumValue=1;       
                     
@@ -272,8 +276,9 @@ enum {
                     self.sliderCell = cell;
                     [theSlider release];
                     
-                    cell.detailTextLabel.text = [self getDayDetailLabel];
-                }
+                    cell.detailTextLabel.text = [self getDayDetailLabelBy:[self getExpireDay] ];
+                    
+                    }
             }
 
             
@@ -329,6 +334,22 @@ enum {
     refeshInterval = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
 }
 
+-(void)refreshSliderDraging:(id)sender
+{
+    NSNumber* currentValue = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
+    UITableViewCell* tableCell =  (UITableViewCell*)[(UISlider*)sender superview];
+    tableCell.detailTextLabel.text = [self getTimeDetailLabelBy:currentValue];
+        
+}
+
+-(void)expireSliderDraging:(id)sender
+{
+    NSNumber* currentValue = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
+    UITableViewCell* tableCell =  (UITableViewCell*)[(UISlider*)sender superview];
+    tableCell.detailTextLabel.text = [self getDayDetailLabelBy:currentValue];
+    
+}
+
 -(void)expireSliderMoved:(id)sender
 {
     expireDay = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
@@ -370,11 +391,23 @@ enum {
     [self.rootController setFeedExpire:expireDay ];
 }
 
--(NSString*)getTimeDetailLabel
+-(NSNumber*)getRefreshInterval
 {
     NSNumber* theTime = [self.rootController getRefreshInterval];
+    return theTime;
+}
+
+-(NSNumber*)getExpireDay
+{
+    NSNumber* theTime = [self.rootController getExpireDay];
+    return theTime;
+}
+
+
+-(NSString*)getTimeDetailLabelBy:(NSNumber*)inTime
+{
     NSString* timeString = nil;
-    switch ([theTime intValue]) {
+    switch ([inTime intValue]) {
         case kFastest:
             timeString = @"10 minutes";
             break;
@@ -397,11 +430,10 @@ enum {
     return timeString;
 }
 
--(NSString*)getDayDetailLabel
+-(NSString*)getDayDetailLabelBy:(NSNumber*)inTime
 {
-    NSNumber* theTime = [self.rootController getExpireDay];
     NSString* timeString = nil;
-    switch ([theTime intValue]) {
+    switch ([inTime intValue]) {
         case kFastest:
             timeString = @"1 days";
             break;
