@@ -293,6 +293,8 @@
     [allEntries insertObject:entryX atIndex:0];
     
     [self saveRssEntriesToFile];
+    
+    [self preLoadRssEntryByURL: theURL];
 }
 
 -(void)deleteRssEntryWithIndex:(NSInteger)inIndex 
@@ -306,7 +308,7 @@
 -(void) refreshFeeds
 {
     [self preLoadRssEntryDetailInfo];
-    
+    [self removeExpiredFeeds];
 }
 
 -(void)preLoadRssEntryDetailInfo
@@ -323,6 +325,9 @@
         [request setDelegate:self];
         [queue addOperation:request];
     }
+    
+    [self removeExpiredFeeds];
+
 }
 
 -(void)preLoadRssEntryByURL:(NSString*)theURL
@@ -361,15 +366,20 @@
 
 -(void) setExpireDayWithIntValue:(int)inTime
 {
+    BOOL needRefresh = NO;
+    if (inTime != dayFrame) {
+        needRefresh = YES;
+    }
+    
     switch (inTime) {
         case kFastest:
-            dayFrame = 5;    //5days
+            dayFrame = 1;    //1days
             break;
         case kFast:
-            dayFrame = 10;   //10days
+            dayFrame = 5;   //5days
             break;
         case kNormal:
-            dayFrame = 15;   // 15days
+            dayFrame = 10;   // 10days
             break;
         case kSlow:
             dayFrame = 20;  // 20 days
@@ -381,6 +391,14 @@
         default:
             dayFrame = 5;
     }
+    
+    if (needRefresh)    // remove expired feeds.s
+    {
+        [self preLoadRssEntryDetailInfo];
+        [self removeExpiredFeeds];
+
+    }
+
 }
 -(void) autoRefresh:(id)sender
 {
@@ -413,7 +431,7 @@
     
     NSLog(@"Unsupported root element: %@", plistPath);
 
-    NSArray* array = [NSArray arrayWithContentsOfFile:plistPath];
+    NSMutableArray* array = [NSMutableArray arrayWithContentsOfFile:plistPath];
     if(!array) {
         allEntries = [[NSMutableArray alloc] init];
     } else {
@@ -486,7 +504,7 @@
     
     NSLog(@"Unsupported root element: %@", plistPath);
     
-    NSArray* array = [NSArray arrayWithContentsOfFile:plistPath];
+    NSMutableArray* array = [NSMutableArray arrayWithContentsOfFile:plistPath];
     if(!array) {
         settings = [[NSMutableArray alloc] init];
         [self initSettings];
@@ -705,9 +723,15 @@
 
 -(void)addFeed:(NSMutableDictionary*)inFeedItem intoRssEntry:(NSString*)theURL
 {
-	NSMutableArray* theFeedArray = [self getFeedArrayByURL:theURL];
-	[theFeedArray addObject:inFeedItem ];
+    @try 
+    {
+        NSMutableArray* theFeedArray = [self getFeedArrayByURL:theURL];
+        [theFeedArray addObject:inFeedItem ];
+    }
+    @catch (NSException *exception) {
+
     
+    }
 }
 
 
@@ -740,8 +764,9 @@
 // Avoid expired feed into FeedArray.
 -(BOOL)isFeedExpired:(NSMutableDictionary*) inFeedItem
 {
+    // return YES if feed expired
     BOOL isExpired = NO;
-    NSDate* theDate = [inFeedItem valueForKey:@"theURL"];
+    NSDate* theDate = [inFeedItem valueForKey:@"date"];
     NSTimeInterval currExpireTime = dayFrame*60*60*24 ;
     if(theDate)
     {
@@ -757,10 +782,22 @@
 // if user change expire date settings, Call this to remove the feed if expired. 
 -(void)removeExpiredFeeds
 {
-    //get each RssURL 
-        // get each Feed
-            // ifExpired
-                // remove it
+    for ( int i= 0; i < [self.allEntries count]; i++) 
+    {
+        //get each RssURL 
+        NSMutableDictionary *theEntry=[self.allEntries objectAtIndex:i];
+        NSMutableArray* feedArray = [theEntry objectForKey:@"feedList"];
+        
+        for ( int k= 0; k < [feedArray count]; k++) 
+        {
+            // get each Feed
+            NSMutableDictionary *theFeed = [feedArray objectAtIndex:k];
+            if ([self isFeedExpired:theFeed]) {
+                [feedArray removeObjectAtIndex:k];
+                
+            }
+        }
+    }
 }
 
 #pragma mark ----- HTTP  Services 
@@ -854,8 +891,12 @@
         {
            // NSMutableArray *entries = [[NSMutableArray alloc] autorelease];
             NSMutableArray *entries = [NSMutableArray array];
-
-            [self parseFeed:doc.rootElement entries:entries];                
+            
+            @try {
+                [self parseFeed:doc.rootElement entries:entries];                
+            }
+            @catch (NSException *exception) {
+            }
             
             if(request != nil)
             {
