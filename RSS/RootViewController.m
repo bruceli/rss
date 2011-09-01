@@ -798,6 +798,9 @@
             }
         }
     }
+    [self countUnreadFeeds];
+    [[self tableView] reloadData];
+
 }
 
 #pragma mark ----- HTTP  Services 
