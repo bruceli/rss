@@ -114,7 +114,7 @@ enum {
     
 //Number of rows it should expect should be based on the section
    
-    NSInteger counts;
+    NSInteger counts = 0;
     
     switch (section) {
         case kRssSection: 
@@ -138,7 +138,7 @@ enum {
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString * sectionName;
+    NSString * sectionName = nil;
     
     switch (section) {
         case kRssSection: 
@@ -339,6 +339,8 @@ enum {
     NSNumber* currentValue = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
     UITableViewCell* tableCell =  (UITableViewCell*)[(UISlider*)sender superview];
     tableCell.detailTextLabel.text = [self getTimeDetailLabelBy:currentValue];
+    
+    [currentValue release];
         
 }
 
@@ -347,6 +349,8 @@ enum {
     NSNumber* currentValue = [[NSNumber numberWithFloat:[(UISlider*)sender value]] retain];
     UITableViewCell* tableCell =  (UITableViewCell*)[(UISlider*)sender superview];
     tableCell.detailTextLabel.text = [self getDayDetailLabelBy:currentValue];
+    
+    [currentValue release];
     
 }
 

@@ -646,7 +646,7 @@
 
 -(NSMutableDictionary*)getFeedItemByURL:(NSString*)theURL feedIndex:(NSInteger)index
 {
-    NSMutableDictionary* feedItem;
+    NSMutableDictionary* feedItem = nil;
     NSMutableArray* feedArray = [self getFeedArrayByURL:theURL];
     if(feedArray != nil){
         feedItem = [feedArray objectAtIndex:index];
@@ -819,7 +819,7 @@
         
         NSArray *items = [channel elementsForName:@"item"];
         for (GDataXMLElement *item in items) {
-            NSDate *articleDate;
+            NSDate *articleDate = nil;
             NSString *articleTitle = [item valueForChild:@"title"];
             NSString *articleUrl = [item valueForChild:@"link"];            
             NSString *articleDateString = [item valueForChild:@"pubDate"];
