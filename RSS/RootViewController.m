@@ -787,17 +787,20 @@
         //get each RssURL 
         NSMutableDictionary *theEntry=[self.allEntries objectAtIndex:i];
         NSMutableArray* feedArray = [theEntry objectForKey:@"feedList"];
+        NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
         
-        for ( int k= 0; k < [feedArray count]; k++) 
+        for (int k= 0; k < [feedArray count]; k++) 
         {
             // get each Feed
             NSMutableDictionary *theFeed = [feedArray objectAtIndex:k];
-            if ([self isFeedExpired:theFeed]) {
-                [feedArray removeObjectAtIndex:k];
-                
+            if ([self isFeedExpired:theFeed]) 
+            {
+                [discardedItems addIndex:k];
             }
         }
+        [feedArray removeObjectsAtIndexes:discardedItems];
     }
+    
     [self countUnreadFeeds];
     [[self tableView] reloadData];
 
