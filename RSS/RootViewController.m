@@ -806,7 +806,10 @@
                 [discardedItems addIndex:k];
             }
         }
-        [feedArray removeObjectsAtIndexes:discardedItems];
+        if ([discardedItems count] > 0) 
+        {
+            [feedArray removeObjectsAtIndexes:discardedItems];   
+        }
     }
     
     [self countUnreadFeeds];
