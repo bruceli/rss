@@ -24,6 +24,7 @@
 
     BOOL canRefresh;
 
+    NSLock *lock;
     
 }
 

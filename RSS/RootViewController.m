@@ -44,6 +44,8 @@
 {
     [super viewDidLoad];
     
+    lock = [[NSLock alloc] init];
+    
     self.title = @"Feeds";
     self.feedList = [NSMutableArray array];
     self.queue = [[[NSOperationQueue alloc] init] autorelease];
@@ -66,13 +68,13 @@
     // init canRefresh here;
     canRefresh = YES;
     
-    [self preLoadRssEntryDetailInfo];
-	
     NSNumber* intervalTime = [self getRefreshInterval];
     [self setTimeFreameWithIntValue:[intervalTime intValue]];
     
     NSNumber* expireDay = [self getExpireDay];
     [self setExpireDayWithIntValue:[expireDay intValue]];
+    
+    [self preLoadRssEntryDetailInfo];
 
 }
 
@@ -114,6 +116,8 @@
     [queue release];
     queue = nil;
     
+    [lock release];
+    lock = nil;
     
     [super dealloc];
 }
@@ -403,8 +407,11 @@
 -(void) autoRefresh:(id)sender
 {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    while (YES) {
-        // set Timeframe from setting view.
+    BOOL keepRunning = YES;
+
+    while (keepRunning) 
+    {
+       // set Timeframe from setting view.
         [NSThread sleepForTimeInterval:self.timeFrame];
         
         if([self isAutoRefresh])
@@ -412,7 +419,6 @@
             [self preLoadRssEntryDetailInfo];
             // Reload RSS Data HERE..... 
         }
-        
     }
     
     [NSThread exit];
@@ -782,6 +788,8 @@
 // if user change expire date settings, Call this to remove the feed if expired. 
 -(void)removeExpiredFeeds
 {
+    [lock lock];
+    
     for ( int i= 0; i < [self.allEntries count]; i++) 
     {
         //get each RssURL 
@@ -803,7 +811,8 @@
     
     [self countUnreadFeeds];
     [[self tableView] reloadData];
-
+    
+    [lock unlock];
 }
 
 #pragma mark ----- HTTP  Services 

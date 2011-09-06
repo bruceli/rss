@@ -34,7 +34,7 @@ enum {
 
 - (void)dealloc
 {
-    [settingArray dealloc];
+    [settingArray release];
     settingArray = nil;
         
     [super dealloc];
@@ -59,7 +59,7 @@ enum {
     expireDay = [[[NSNumber alloc] initWithInt:0] retain];
     
     //Initialize the array.
-    self.settingArray = [[NSMutableArray alloc] init];
+    settingArray = [[NSMutableArray alloc] init];
     [settingArray addObject:@"Automatic refresh"];
     [settingArray addObject:@"Refresh interval"];
     [settingArray addObject:@"Remove articles after"];
@@ -370,7 +370,8 @@ enum {
         
         //Pass the URL to subViewController.
         addViewController.cellIndexPath = indexPath;
-        
+        addViewController.settingController = self;
+
         NSMutableDictionary *theEntry=[self.rootController.allEntries objectAtIndex:indexPath.row];
         addViewController.incomingTitle  = [theEntry objectForKey:@"blogTitle"];
         addViewController.incomingRss  = [theEntry objectForKey:@"theURL"];
