@@ -14,7 +14,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "525"
          endingLineNumber = "525"
-         landmarkName = "-loadSettingFromFile"
+         landmarkName = "-initSettings"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -28,7 +28,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "504"
          endingLineNumber = "504"
-         landmarkName = "-saveSettingToFile"
+         landmarkName = "-loadSettingFromFile"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
