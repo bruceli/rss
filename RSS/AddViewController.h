@@ -27,7 +27,6 @@
 
 @property (retain) IBOutlet UITextField *rssView;
 @property (retain) IBOutlet UITextField *titleView;
-
 //@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 //@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @end

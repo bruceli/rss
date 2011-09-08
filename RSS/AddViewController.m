@@ -67,10 +67,7 @@
     NSString * titleText = [titleView text];
     NSString * rssText = [rssView text];
     
-    if (cellIndexPath)
-        [settingController modifyRssAddressWith:rssText titleWith:titleText atIndex:cellIndexPath];
-    else
-        [settingController saveRssAddressWith:rssText titleWith:titleText];
+    [settingController saveRssAddressWith:(NSString*) rssText titleWith:(NSString*) titleText];
 }
 
 

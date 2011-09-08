@@ -199,7 +199,6 @@ enum {
                 cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
             }
             cell.accessoryView = nil;
-            cell.detailTextLabel.text = nil;
 
             cellValue = [self.settingArray objectAtIndex:indexPath.row];
             
@@ -306,7 +305,6 @@ enum {
 {
     AddViewController *addViewController = [[AddViewController alloc] initWithNibName:@"AddViewController" bundle:nil];
     addViewController.settingController = self;
-    addViewController.cellIndexPath = Nil;
 
     [self.navigationController pushViewController:addViewController animated:YES];
     [addViewController release];
@@ -316,12 +314,6 @@ enum {
 {
     if([rssAddress length]!=0 && [titleText length]!=0)
         [self.rootController addRssEntryWithURL:rssAddress title:titleText];
-}
-
--(void)modifyRssAddressWith:(NSString*) rssAddress titleWith:(NSString*)titleText atIndex:(NSIndexPath*)index
-{
-    if([rssAddress length]!=0 && [titleText length]!=0)
-        [self.rootController modifyRssEntryWithURL:rssAddress title:titleText atIndex:index.row];
 }
 
 -(void)deleteCellItem:(id)sender

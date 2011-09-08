@@ -301,17 +301,6 @@
     [self preLoadRssEntryByURL: theURL];
 }
 
--(void)modifyRssEntryWithURL:(NSString*)theURL title:(NSString *)theTitle atIndex:(int)index
-{
-    NSMutableDictionary* entryX = [self rssEntryWithURL:theURL title:theTitle];
-        
-    [allEntries replaceObjectAtIndex:index withObject:entryX];
-    
-    [self saveRssEntriesToFile];
-    
-    [self preLoadRssEntryByURL: theURL];
-}
-
 -(void)deleteRssEntryWithIndex:(NSInteger)inIndex 
 {
     [allEntries removeObjectAtIndex:inIndex];

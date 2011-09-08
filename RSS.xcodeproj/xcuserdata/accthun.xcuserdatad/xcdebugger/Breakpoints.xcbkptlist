@@ -9,12 +9,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "RSS/RootViewController.m"
-         timestampString = "335209802.249874"
+         timestampString = "337193624.982345"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "514"
-         endingLineNumber = "514"
-         landmarkName = "-getFeedArrayByURL:"
+         startingLineNumber = "525"
+         endingLineNumber = "525"
+         landmarkName = "-loadSettingFromFile"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -23,12 +23,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "RSS/RootViewController.m"
-         timestampString = "335210037.703825"
+         timestampString = "337193624.982345"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "493"
-         endingLineNumber = "493"
-         landmarkName = "-rssEntryWithURL:title:"
+         startingLineNumber = "504"
+         endingLineNumber = "504"
+         landmarkName = "-saveSettingToFile"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
