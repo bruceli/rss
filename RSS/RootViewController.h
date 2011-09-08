@@ -54,6 +54,8 @@ enum {
 
 - (IBAction)settingAction:(id)sender;
 -(void)addRssEntryWithURL:(NSString*)theURL title:(NSString *)theTitle;
+-(void)modifyRssEntryWithURL:(NSString*)theURL title:(NSString *)theTitle atIndex:(int)index;
+
 -(void)deleteRssEntryWithIndex:(NSInteger)inIndex;
 
 -(void)refreshFeeds;

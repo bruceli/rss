@@ -27,5 +27,6 @@
 
 
 -(void)saveRssAddressWith:(NSString*) rssAddress titleWith:(NSString*) titleText;
+-(void)modifyRssAddressWith:(NSString*) rssAddress titleWith:(NSString*) titleText atIndex:(NSIndexPath*)index;
 
 @end
