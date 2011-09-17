@@ -891,11 +891,12 @@
 			
 		[entries addObject:feedEntry];
     }      
-    
 }
 
 
-- (void)parseFeed:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries {    
+- (void)parseFeed:(GDataXMLElement *)rootElement entries:(NSMutableArray *)entries {  
+    
+
     if ([rootElement.name compare:@"rss"] == NSOrderedSame) {
         [self parseRss:rootElement entries:entries];
     } else if ([rootElement.name compare:@"feed"] == NSOrderedSame) {                       
@@ -903,16 +904,20 @@
     } else {
         NSLog(@"Unsupported root element: %@", rootElement.name);
     }    
+    
+
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
     
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
     
     [queue addOperationWithBlock:^{
         
         NSError *error;
-        GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:[request responseData] 
-                                                               options:0 error:&error];
+        GDataXMLDocument *doc = [[[GDataXMLDocument alloc] initWithData:[request responseData] 
+                                                               options:0 error:&error] retain];
         if (doc == nil) { 
             NSLog(@"Failed to parse %@", request.url);
         } else
@@ -944,7 +949,8 @@
     }];
     
     [[self tableView] reloadData];
-    
+    [pool release];
+
 }
 
 

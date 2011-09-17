@@ -40,9 +40,6 @@
 		DA7F0DF913BF0C710055D803 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F0DF713BF0C710055D803 /* MainWindow.xib */; };
 		DA7F0DFC13BF0C720055D803 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7F0DFB13BF0C720055D803 /* RootViewController.m */; };
 		DA7F0DFF13BF0C720055D803 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7F0DFD13BF0C720055D803 /* RootViewController.xib */; };
-		DA7F0E0613BF0C720055D803 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7F0DE513BF0C710055D803 /* UIKit.framework */; };
-		DA7F0E0713BF0C720055D803 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7F0DE713BF0C710055D803 /* Foundation.framework */; };
-		DA7F0E0813BF0C720055D803 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7F0DE913BF0C710055D803 /* CoreGraphics.framework */; };
 		DAA9BF8213F94D8D004B9E75 /* DeleteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA9BF8113F94D8D004B9E75 /* DeleteButton.png */; };
 		DAADD29A13DF05D100AA1FDE /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAADD29813DF05D100AA1FDE /* AddViewController.m */; };
 		DAADD29B13DF05D100AA1FDE /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAADD29913DF05D100AA1FDE /* AddViewController.xib */; };
@@ -50,16 +47,6 @@
 		DAEF9AE713C36AED008FC72D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEF9AE513C36AED008FC72D /* SettingViewController.m */; };
 		DAEF9AE813C36AED008FC72D /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAEF9AE613C36AED008FC72D /* SettingViewController.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DA7F0E0913BF0C720055D803 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DA7F0DD813BF0C710055D803 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DA7F0DE013BF0C710055D803;
-			remoteInfo = RSS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DA4C48AF13C8769600FB7127 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -118,7 +105,6 @@
 		DA7F0DFA13BF0C710055D803 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DA7F0DFB13BF0C720055D803 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		DA7F0DFE13BF0C720055D803 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
-		DA7F0E0513BF0C720055D803 /* RSSTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA9BF8113F94D8D004B9E75 /* DeleteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DeleteButton.png; sourceTree = "<group>"; };
 		DAADD29713DF05D100AA1FDE /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		DAADD29813DF05D100AA1FDE /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
@@ -143,16 +129,6 @@
 				DA79D49913BF7A9900815F19 /* SystemConfiguration.framework in Frameworks */,
 				DA79D49A13BF7A9900815F19 /* MobileCoreServices.framework in Frameworks */,
 				DA5823B513C99C9E00FFEB57 /* CoreData.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DA7F0E0113BF0C720055D803 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DA7F0E0613BF0C720055D803 /* UIKit.framework in Frameworks */,
-				DA7F0E0713BF0C720055D803 /* Foundation.framework in Frameworks */,
-				DA7F0E0813BF0C720055D803 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				DA7F0DE113BF0C710055D803 /* RSS.app */,
-				DA7F0E0513BF0C720055D803 /* RSSTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -363,25 +338,6 @@
 			productReference = DA7F0DE113BF0C710055D803 /* RSS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DA7F0E0413BF0C720055D803 /* RSSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DA7F0E1B13BF0C720055D803 /* Build configuration list for PBXNativeTarget "RSSTests" */;
-			buildPhases = (
-				DA7F0E0013BF0C720055D803 /* Sources */,
-				DA7F0E0113BF0C720055D803 /* Frameworks */,
-				DA7F0E0213BF0C720055D803 /* Resources */,
-				DA7F0E0313BF0C720055D803 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DA7F0E0A13BF0C720055D803 /* PBXTargetDependency */,
-			);
-			name = RSSTests;
-			productName = RSSTests;
-			productReference = DA7F0E0513BF0C720055D803 /* RSSTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -400,7 +356,6 @@
 			projectRoot = "";
 			targets = (
 				DA7F0DE013BF0C710055D803 /* RSS */,
-				DA7F0E0413BF0C720055D803 /* RSSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -424,30 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA7F0E0213BF0C720055D803 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DA7F0E0313BF0C720055D803 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA7F0DDD13BF0C710055D803 /* Sources */ = {
@@ -477,22 +409,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA7F0E0013BF0C720055D803 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DA7F0E0A13BF0C720055D803 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DA7F0DE013BF0C710055D803 /* RSS */;
-			targetProxy = DA7F0E0913BF0C720055D803 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DA7F0DEE13BF0C710055D803 /* InfoPlist.strings */ = {
@@ -590,50 +507,6 @@
 			};
 			name = Release;
 		};
-		DA7F0E1C13BF0C720055D803 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSS.app/RSS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RSSTests/RSSTests-Prefix.pch";
-				INFOPLIST_FILE = "RSSTests/RSSTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		DA7F0E1D13BF0C720055D803 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RSS.app/RSS";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RSSTests/RSSTests-Prefix.pch";
-				INFOPLIST_FILE = "RSSTests/RSSTests-Info.plist";
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -651,15 +524,6 @@
 			buildConfigurations = (
 				DA7F0E1913BF0C720055D803 /* Debug */,
 				DA7F0E1A13BF0C720055D803 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DA7F0E1B13BF0C720055D803 /* Build configuration list for PBXNativeTarget "RSSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DA7F0E1C13BF0C720055D803 /* Debug */,
-				DA7F0E1D13BF0C720055D803 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
