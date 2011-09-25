@@ -621,12 +621,18 @@
 {
     NSNumber* theCount = [NSNumber numberWithInt:0];
     NSMutableArray* feedArray = [NSMutableArray array];
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:TRUE];
+    [feedArray sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    [sortDescriptor release];
+    
     NSArray* keys = [NSArray arrayWithObjects:@"theURL", @"blogTitle",@"unReadCount",@"feedList",nil];
     NSMutableArray* entryInfo = [NSMutableArray arrayWithObjects:theURL, theTitle, theCount,feedArray,nil];
-   
+    
     NSMutableDictionary* rssEntry = [NSMutableDictionary dictionaryWithObjects:entryInfo forKeys:keys];
     return rssEntry;    
 }
+
 
 -(NSMutableDictionary*)feedItemWithURL:(NSString*) theURL title:(NSString*)theTitle date:(NSDate*)theDate
 {
