@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
-               BuildableName = "RSS.app"
-               BlueprintName = "RSS"
+               BuildableName = "StresslessReader.app"
+               BlueprintName = "StresslessReader"
                ReferencedContainer = "container:RSS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,11 +49,18 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
-            BuildableName = "RSS.app"
-            BlueprintName = "RSS"
+            BuildableName = "StresslessReader.app"
+            BlueprintName = "StresslessReader"
             ReferencedContainer = "container:RSS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -66,8 +73,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
-            BuildableName = "RSS.app"
-            BlueprintName = "RSS"
+            BuildableName = "StresslessReader.app"
+            BlueprintName = "StresslessReader"
             ReferencedContainer = "container:RSS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -25,6 +25,7 @@
     BOOL canRefresh;
 
     NSLock *lock;
+    NSLock *parseFeedLock;
     
 }
 

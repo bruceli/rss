@@ -91,7 +91,7 @@
 		DA79D49513BF7A9900815F19 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DA79D49613BF7A9900815F19 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DA79D49713BF7A9900815F19 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		DA7F0DE113BF0C710055D803 /* RSS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA7F0DE113BF0C710055D803 /* StresslessReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StresslessReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7F0DE513BF0C710055D803 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA7F0DE713BF0C710055D803 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA7F0DE913BF0C710055D803 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -227,7 +227,7 @@
 		DA7F0DE213BF0C710055D803 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA7F0DE113BF0C710055D803 /* RSS.app */,
+				DA7F0DE113BF0C710055D803 /* StresslessReader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,9 +321,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA7F0DE013BF0C710055D803 /* RSS */ = {
+		DA7F0DE013BF0C710055D803 /* StresslessReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "RSS" */;
+			buildConfigurationList = DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "StresslessReader" */;
 			buildPhases = (
 				DA7F0DDD13BF0C710055D803 /* Sources */,
 				DA7F0DDE13BF0C710055D803 /* Frameworks */,
@@ -333,9 +333,9 @@
 			);
 			dependencies = (
 			);
-			name = RSS;
+			name = StresslessReader;
 			productName = RSS;
-			productReference = DA7F0DE113BF0C710055D803 /* RSS.app */;
+			productReference = DA7F0DE113BF0C710055D803 /* StresslessReader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -355,7 +355,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA7F0DE013BF0C710055D803 /* RSS */,
+				DA7F0DE013BF0C710055D803 /* StresslessReader */,
 			);
 		};
 /* End PBXProject section */
@@ -485,6 +485,7 @@
 				GCC_PREFIX_HEADER = "RSS/RSS-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "RSS/RSS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -500,6 +501,7 @@
 				GCC_PREFIX_HEADER = "RSS/RSS-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "RSS/RSS-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
@@ -519,7 +521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "RSS" */ = {
+		DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "StresslessReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA7F0E1913BF0C720055D803 /* Debug */,
