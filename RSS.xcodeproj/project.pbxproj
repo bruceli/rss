@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26F282BA144D9DF2002CBDD4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F282B9144D9DF2002CBDD4 /* icon.png */; };
+		26F282BD144D9DFA002CBDD4 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F282BC144D9DFA002CBDD4 /* icon_114.png */; };
 		DA4C48B113C8769600FB7127 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4C48B013C8769600FB7127 /* CustomCell.m */; };
 		DA4C48B413C876CA00FB7127 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4C48B213C876CA00FB7127 /* checked.png */; };
 		DA4C48B513C876CA00FB7127 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = DA4C48B313C876CA00FB7127 /* unchecked.png */; };
@@ -49,6 +51,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26F282B9144D9DF2002CBDD4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		26F282BC144D9DFA002CBDD4 /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
+		26F282BE144D9E25002CBDD4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DA4C48AF13C8769600FB7127 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		DA4C48B013C8769600FB7127 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		DA4C48B213C876CA00FB7127 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
@@ -91,7 +96,7 @@
 		DA79D49513BF7A9900815F19 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DA79D49613BF7A9900815F19 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DA79D49713BF7A9900815F19 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		DA7F0DE113BF0C710055D803 /* StresslessReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StresslessReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA7F0DE113BF0C710055D803 /* Light Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Light Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7F0DE513BF0C710055D803 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA7F0DE713BF0C710055D803 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA7F0DE913BF0C710055D803 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -215,6 +220,9 @@
 		DA7F0DD613BF0C710055D803 = {
 			isa = PBXGroup;
 			children = (
+				26F282BE144D9E25002CBDD4 /* libz.dylib */,
+				26F282BC144D9DFA002CBDD4 /* icon_114.png */,
+				26F282B9144D9DF2002CBDD4 /* icon.png */,
 				DA7F0DF413BF0C710055D803 /* RSSAppDelegate.h */,
 				DA7F0DF513BF0C710055D803 /* RSSAppDelegate.m */,
 				DA20CCED13C1FEDC00B4B195 /* WebView */,
@@ -227,7 +235,7 @@
 		DA7F0DE213BF0C710055D803 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA7F0DE113BF0C710055D803 /* StresslessReader.app */,
+				DA7F0DE113BF0C710055D803 /* Light Reader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -321,9 +329,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA7F0DE013BF0C710055D803 /* StresslessReader */ = {
+		DA7F0DE013BF0C710055D803 /* Light Reader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "StresslessReader" */;
+			buildConfigurationList = DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "Light Reader" */;
 			buildPhases = (
 				DA7F0DDD13BF0C710055D803 /* Sources */,
 				DA7F0DDE13BF0C710055D803 /* Frameworks */,
@@ -333,9 +341,9 @@
 			);
 			dependencies = (
 			);
-			name = StresslessReader;
+			name = "Light Reader";
 			productName = RSS;
-			productReference = DA7F0DE113BF0C710055D803 /* StresslessReader.app */;
+			productReference = DA7F0DE113BF0C710055D803 /* Light Reader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -343,6 +351,9 @@
 /* Begin PBXProject section */
 		DA7F0DD813BF0C710055D803 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = DA7F0DDB13BF0C710055D803 /* Build configuration list for PBXProject "RSS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -355,7 +366,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA7F0DE013BF0C710055D803 /* StresslessReader */,
+				DA7F0DE013BF0C710055D803 /* Light Reader */,
 			);
 		};
 /* End PBXProject section */
@@ -376,6 +387,8 @@
 				DAA9BF8213F94D8D004B9E75 /* DeleteButton.png in Resources */,
 				DA78D5DA13FAEDA100527653 /* WebViewController.xib in Resources */,
 				DA78D5E013FAEEAD00527653 /* rssicon.png in Resources */,
+				26F282BA144D9DF2002CBDD4 /* icon.png in Resources */,
+				26F282BD144D9DFA002CBDD4 /* icon_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,11 +461,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 			};
@@ -462,15 +475,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lxml2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -483,11 +497,13 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSS/RSS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "RSS/RSS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -499,11 +515,13 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSS/RSS-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "RSS/RSS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -521,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "StresslessReader" */ = {
+		DA7F0E1813BF0C720055D803 /* Build configuration list for PBXNativeTarget "Light Reader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA7F0E1913BF0C720055D803 /* Debug */,

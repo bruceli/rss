@@ -14,8 +14,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
-               BuildableName = "StresslessReader.app"
-               BlueprintName = "StresslessReader"
+               BuildableName = "Light Reader.app"
+               BlueprintName = "Light Reader"
                ReferencedContainer = "container:RSS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -38,19 +38,30 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
+            BuildableName = "Light Reader.app"
+            BlueprintName = "Light Reader"
+            ReferencedContainer = "container:RSS.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug">
+      buildConfiguration = "Debug"
+      debugDocumentVersioning = "YES"
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
-            BuildableName = "StresslessReader.app"
-            BlueprintName = "StresslessReader"
+            BuildableName = "Light Reader.app"
+            BlueprintName = "Light Reader"
             ReferencedContainer = "container:RSS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -68,13 +79,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release">
+      buildConfiguration = "Release"
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA7F0DE013BF0C710055D803"
-            BuildableName = "StresslessReader.app"
-            BlueprintName = "StresslessReader"
+            BuildableName = "Light Reader.app"
+            BlueprintName = "Light Reader"
             ReferencedContainer = "container:RSS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
