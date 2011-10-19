@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26CC470C144F2C36006CCCC6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F282BE144D9E25002CBDD4 /* libz.dylib */; };
 		26F282BA144D9DF2002CBDD4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F282B9144D9DF2002CBDD4 /* icon.png */; };
 		26F282BD144D9DFA002CBDD4 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 26F282BC144D9DFA002CBDD4 /* icon_114.png */; };
 		DA4C48B113C8769600FB7127 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4C48B013C8769600FB7127 /* CustomCell.m */; };
@@ -29,7 +30,6 @@
 		DA79D49013BF7A6A00815F19 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DA79D48313BF7A6A00815F19 /* ASIInputStream.m */; };
 		DA79D49113BF7A6A00815F19 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = DA79D48513BF7A6A00815F19 /* ASINetworkQueue.m */; };
 		DA79D49213BF7A6A00815F19 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = DA79D48913BF7A6A00815F19 /* Reachability.m */; };
-		DA79D49413BF7A8200815F19 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA79D49313BF7A8200815F19 /* libz.1.2.3.dylib */; };
 		DA79D49813BF7A9900815F19 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA79D49513BF7A9900815F19 /* CFNetwork.framework */; };
 		DA79D49913BF7A9900815F19 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA79D49613BF7A9900815F19 /* SystemConfiguration.framework */; };
 		DA79D49A13BF7A9900815F19 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA79D49713BF7A9900815F19 /* MobileCoreServices.framework */; };
@@ -126,10 +126,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CC470C144F2C36006CCCC6 /* libz.dylib in Frameworks */,
 				DA7F0DE613BF0C710055D803 /* UIKit.framework in Frameworks */,
 				DA7F0DE813BF0C710055D803 /* Foundation.framework in Frameworks */,
 				DA7F0DEA13BF0C710055D803 /* CoreGraphics.framework in Frameworks */,
-				DA79D49413BF7A8200815F19 /* libz.1.2.3.dylib in Frameworks */,
 				DA79D49813BF7A9900815F19 /* CFNetwork.framework in Frameworks */,
 				DA79D49913BF7A9900815F19 /* SystemConfiguration.framework in Frameworks */,
 				DA79D49A13BF7A9900815F19 /* MobileCoreServices.framework in Frameworks */,
@@ -461,7 +461,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -477,7 +477,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -497,7 +497,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSS/RSS-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "RSS/RSS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -515,7 +515,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RSS/RSS-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "RSS/RSS-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
